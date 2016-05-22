@@ -2,13 +2,17 @@ class TacksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
+  def index
+    @tacks = Tack.all
+  end
+
   def new
-    @tack = current_user.pins.build
+    @tack = Tack.new
   end
 
   def create
     @tack = current_user.tacks.build(tack_params)
-    if tack.save
+    if @tack.save
       redirect_to @tack, notice: 'You added a Tack!'
     else
       render 'new'
@@ -16,15 +20,17 @@ class TacksController < ApplicationController
   end
 
   def edit
+    @tack = Tack.find(params[:id])
   end
 
   def show
-  end
-
-  def index
+    @tack = Tack.find(params[:id])
   end
 
   def destroy
+    @tack = Tack.find(params[:id])
+    @tack.destroy
+    redirect_to tacks_path, notice: 'You deleted a Tack!'
   end
 
   def update
@@ -32,8 +38,12 @@ class TacksController < ApplicationController
 
   private
   def correct_user
-    @pin = current_user.pins.find_by(id: params[:id])
-    redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
-  end 
+    @tack = current_user.tacks.find_by(id: params[:id])
+    redirect_to tacks_path, notice: "Not authorized to edit this Tack" if @tack.nil?
+  end
+
+  def tack_params
+    params.require(:tack).permit(:description)
+  end
 
 end

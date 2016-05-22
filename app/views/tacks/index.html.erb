@@ -1,2 +1,14 @@
-<h1>Tacks#index</h1>
-<p>Find me in app/views/tacks/index.html.erb</p>
+<h1>Your Tacks</h1>
+<%= link_to 'New Tack', new_tack_path %>
+<table>
+<% @tacks.each do |tack| %>
+  <tr>
+    <td><%= tack.description %></td>
+    <td><%= link_to 'Show', tack_path(tack) %></td>
+    <td><%= link_to 'Edit', edit_tack_path(tack) %></td>
+    <td><%= link_to 'Destroy', tack_path(tack),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
-  get 'tacks/new'
-
-  get 'tacks/edit'
-
-  get 'tacks/show'
-
-  get 'tacks/index'
-
-  get 'tacks/destroy'
-
-  get 'tacks/update'
-
-  get 'tacks/create'
+  resources :tacks
 
   devise_for :users
   root 'home#index'

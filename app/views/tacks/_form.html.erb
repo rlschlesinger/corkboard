@@ -1,0 +1,26 @@
+<%= form_for @tack do |f| %>
+
+  <% if @tack.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tack.errors.count, "error") %> prohibited
+        this tack from being saved:
+      </h2>
+      <ul>
+        <% @tack.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class ="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <br>
+    <%= f.submit %>
+  </div>
+
+<% end %>
