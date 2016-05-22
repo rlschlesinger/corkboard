@@ -1,2 +1,22 @@
-<h1>Tacks#show</h1>
-<p>Find me in app/views/tacks/show.html.erb</p>
+<div class="posts-wrapper row">
+  <div class="post">
+    <div class="post-head">
+      <div class="name text-center">
+        <%= @tack.description %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center edit-links">
+  <% if user_signed_in? %>
+  <%= link_to "Back", tacks_path %>
+  |
+  <%= link_to "Edit Post", edit_tack_path(@tack) %>
+  |
+  <%= link_to 'Untack', tack_path(@tack),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+  <% else %>
+  <%= link_to "Back", tacks_path %>
+  <% end %>
+</div>

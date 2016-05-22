@@ -3,12 +3,17 @@
 <table>
 <% @tacks.each do |tack| %>
   <tr>
+    <% if user_signed_in? %>
     <td><%= tack.description %></td>
-    <td><%= link_to 'Show', tack_path(tack) %></td>
-    <td><%= link_to 'Edit', edit_tack_path(tack) %></td>
-    <td><%= link_to 'Destroy', tack_path(tack),
+    <td><%= link_to 'Show', tack_path(tack) %>| </td>
+    <td><%= link_to 'Edit', edit_tack_path(tack) %>| </td>
+    <td><%= link_to 'Untack', tack_path(tack),
             method: :delete,
             data: { confirm: 'Are you sure?' } %></td>
+    <% else %>
+    <td><%= tack.description %></td>
+    <td><%= link_to 'Show', tack_path(tack) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
