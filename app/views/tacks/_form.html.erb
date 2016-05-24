@@ -1,4 +1,4 @@
-<%= form_for @tack do |f| %>
+<%= form_for @tack, url: tacks_path, html: { multipart: true } do |f| %>
 
   <% if @tack.errors.any? %>
     <div id="error_explanation">
@@ -17,6 +17,7 @@
   <div class ="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
+    <%= f.file_field :tack_image %>
   </div>
   <div class="actions">
     <br>

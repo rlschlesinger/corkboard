@@ -46,7 +46,7 @@ class TacksController < ApplicationController
   end
 
   def tack_params
-    params.require(:tack).permit(:description)
+    params.require(:tack).permit(:description, :tack_image)
   end
 
 end
