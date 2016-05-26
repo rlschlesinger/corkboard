@@ -12,6 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require masonry/dist/masonry.pkgd
+//= require imagesloaded/imagesloaded.pkgd
 //= require bootstrap/dist/js/bootstrap
 //= require turbolinks
+//= require packery/dist/packery.pkgd.js
+//= require packery.pkgd
 //= require_tree .
+
+$(document).ready(function(){
+  $('.grid').imagesLoaded(function() {
+    $('.grid').masonry({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-item'
+    });
+    $('.grid').packery({
+      itemSelector: '.grid-item'
+    });
+  })
+});

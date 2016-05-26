@@ -1,12 +1,15 @@
 <h1>Your Tacks</h1>
 <%= link_to 'New Tack', new_tack_path %>
 <div class = "container">
-  <div class = "row">
+  <div class = "grid row">
 <% @tacks.each do |tack| %>
-  <div class="tack">
-    <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
-        <br>
+  <div class="grid-item col-md-4 tack_square">
+    <div class= "tack_image">
+       <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
+    </div>
+    <div class=" tack_descr">
         <%= link_to tack.description, tack_path(tack) %>
+    </div>
   </div>
 
 <% end %>

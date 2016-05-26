@@ -35,6 +35,9 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
+
+gem 'packery-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

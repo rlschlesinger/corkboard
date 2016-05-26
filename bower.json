@@ -14,5 +14,10 @@
     "vendor/assets/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "masonry": "^4.1.0",
+    "imagesloaded": "^4.1.0",
+    "packery": "^2.1.0"
+  }
 }

@@ -1,9 +1,10 @@
 <div class="posts-wrapper row">
   <div class="post">
-    <div class="post-head">
-      <div class="name text-center">
+    <div class="post-head panel panel-default">
+      <div class="panel-body name text-center">
         <%= image_tag(@tack.tack_image.url(:large))%>
-        <br>
+      </div>
+      <div class ="panel-footer text-center">
         <%= @tack.description %>
       </div>
     </div>

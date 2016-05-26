@@ -1,3 +1,31 @@
 // Place all the styles related to the tacks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tack_square {
+}
+
+.grid-item{
+  margin-bottom: 25px;
+}
+
+
+.tack_image {
+  border-radius: 100%;
+  text-align: center;
+}
+
+.tack_image img{
+  border-radius: 2%;
+}
+
+.tack_descr{
+  text-align: center;
+}
+
+.tack_descr a{
+  color: black;
+}
+
+.tack_descr a:hover{
+  text-decoration: none;
+}
