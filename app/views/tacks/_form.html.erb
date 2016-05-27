@@ -1,4 +1,4 @@
-<%= form_for @tack, url: tacks_path, html: { multipart: true } do |f| %>
+<%= form_for @tack do |f| %>
 
   <% if @tack.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +21,7 @@
   </div>
   <div class="actions">
     <br>
-    <%= f.submit %>
+    <%= f.submit "Tack", class: "btn btn-success" %>
   </div>
 
 <% end %>

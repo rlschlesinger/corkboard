@@ -13,21 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require masonry/dist/masonry.pkgd
+//= require draggabilly/dist/draggabilly.pkgd.js
 //= require imagesloaded/imagesloaded.pkgd
 //= require bootstrap/dist/js/bootstrap
 //= require turbolinks
-//= require packery/dist/packery.pkgd.js
+//= require packery/dist/packery.pkgd.min.js
 //= require packery.pkgd
 //= require_tree .
 
 $(document).ready(function(){
   $('.grid').imagesLoaded(function() {
-    $('.grid').masonry({
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-item'
-    });
     $('.grid').packery({
-      itemSelector: '.grid-item'
+      itemSelector: '.grid-item',
+      // columnWidth helps with drop positioning
+    });
+
+    $(".grid").find('.grid-item').each( function( i, gridItem ) {
+      var draggie = new Draggabilly( gridItem );
+      $(".grid").packery( 'bindDraggabillyEvents', draggie );
     });
   })
 });

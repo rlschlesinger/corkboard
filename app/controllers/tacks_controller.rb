@@ -35,8 +35,11 @@ class TacksController < ApplicationController
 
   def update
     @tack = Tack.find(params[:id])
-    @tack.update(tack_params)
-    redirect_to(tack_path(@tack))
+    if @tack.update(tack_params)
+      redirect_to(tack_path(@tack))
+    else
+      render 'edit'
+    end
   end
 
   private

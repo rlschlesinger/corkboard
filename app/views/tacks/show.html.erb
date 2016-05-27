@@ -10,6 +10,30 @@
     </div>
   </div>
 </div>
+
+
+<h2>Comments</h2>
+<% @tack.comments.each do |comment| %>
+  <p>
+    <%= comment.commenter %>: &quot;<%= comment.body %>&quot;
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@tack, @tack.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 <div class="text-center edit-links">
   <% if user_signed_in? %>
   <%= link_to "Back", tacks_path %>
