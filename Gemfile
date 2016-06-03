@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Devise for authentication
 gem 'devise', '~> 4.1', '>= 4.1.1'
 
-gem 'paperclip'
+gem "paperclip", "~> 5.0.0.beta1"
 
 
 gem 'packery-rails'
