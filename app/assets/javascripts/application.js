@@ -21,7 +21,7 @@
 //= require packery.pkgd
 //= require_tree .
 
-$(document).ready(function(){
+function ready(){
   $('.grid').imagesLoaded(function() {
     $('.grid').packery({
       itemSelector: '.grid-item',
@@ -33,4 +33,7 @@ $(document).ready(function(){
       $(".grid").packery( 'bindDraggabillyEvents', draggie );
     });
   });
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
