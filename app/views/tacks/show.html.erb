@@ -22,8 +22,7 @@
 <h2>Add a comment:</h2>
 <%= form_for([@tack, @tack.comments.build]) do |f| %>
   <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= link_to comment.user.username, user_path(comment.user.username)%>
   </p>
   <p>
     <%= f.label :body %><br>

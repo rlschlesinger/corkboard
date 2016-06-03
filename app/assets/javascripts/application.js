@@ -32,5 +32,5 @@ $(document).ready(function(){
       var draggie = new Draggabilly( gridItem );
       $(".grid").packery( 'bindDraggabillyEvents', draggie );
     });
-  })
+  });
 });
