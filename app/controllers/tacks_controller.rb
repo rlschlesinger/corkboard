@@ -42,6 +42,12 @@ class TacksController < ApplicationController
     end
   end
 
+  def repost
+    @tack = Tack.find(params[:id])
+    @tack.repost(current_user)
+    redirect_to tack_path
+  end
+
   private
   def correct_user
     @tack = current_user.tacks.find_by(id: params[:id])

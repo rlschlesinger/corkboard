@@ -1,5 +1,7 @@
+<div></div>
+<%= image_tag @user.avatar.url(:thumb)%>
 <h3><%= @user.username %></h3>
-<p> biography </p>
+<p><%= @user.bio %></p>
 
 <div>
   <h4><%= @user.username %>'s Tacks</h4>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :tacks do
     resources :comments
+    member do
+      post '/repost' => 'tacks#repost'
+    end
   end
 
   devise_for :users

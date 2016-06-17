@@ -17,6 +17,11 @@
         <%= link_to 'Delete', tack, method: :delete, data: {confirm: 'Are you sure?'}%>
       </div>
     <% end %>
+    <% if user_signed_in? && tack.user != current_user %>
+    <div class="edit_tack_buttons">
+      <%= link_to 'Repost', repost_tack_path(tack), method: :post, data: {confirm: 'Are you sure?'} %>
+    </div>
+    <% end %>
   </div>
 
 <% end %>
