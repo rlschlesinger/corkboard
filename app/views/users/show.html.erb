@@ -1,0 +1,28 @@
+<h3><%= @user.username %></h3>
+<p> biography </p>
+
+<div>
+  <h4><%= @user.username %>'s Tacks</h4>
+  <div class = "container">
+    <div class = "grid row">
+  <% @user.tacks.each do |tack| %>
+    <div class="grid-item col-md-4 tack_square">
+      <div class= "tack_image">
+         <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
+      </div>
+      <div class="tack_descr">
+          <p><strong><%= link_to tack.user.username, user_path(tack.user.username) %></strong></p>
+          <p><%= link_to tack.description, tack_path(tack) %><p>
+      </div>
+      <% if tack.user == current_user %>
+        <div class="edit_tack_buttons">
+          <%= link_to 'Edit', edit_tack_path(tack) %> |
+          <%= link_to 'Delete', tack, method: :delete, data: {confirm: 'Are you sure?'}%>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+    </div>
+  </div>
+</div>

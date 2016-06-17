@@ -8,7 +8,7 @@
        <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
     </div>
     <div class="tack_descr">
-        <p><strong><%= tack.user.username %></strong></p>
+        <p><strong><%= link_to tack.user.username, user_path(tack.user.username) %></strong></p>
         <p><%= link_to tack.description, tack_path(tack) %><p>
     </div>
     <% if tack.user == current_user %>

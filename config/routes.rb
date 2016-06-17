@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
+  get ':username' => 'users#show', as: 'user'
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
