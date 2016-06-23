@@ -33,7 +33,7 @@
 <% end %>
 
 <div class="text-center edit-links">
-  <% if user_signed_in? %>
+  <% if @tack.user == current_user %>
   <%= link_to "Back", tacks_path %>
   |
   <%= link_to "Edit Post", edit_tack_path(@tack) %>
@@ -42,6 +42,6 @@
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
   <% else %>
-  <%= link_to "Back", tacks_path %>
+  <%= link_to "Back", tacks_path%>
   <% end %>
 </div>

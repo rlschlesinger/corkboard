@@ -15,13 +15,13 @@
   <% end %>
 
   <div class ="field">
+    <%= f.file_field :tack_image %><br>
     <%= f.label :description %><br>
     <%= f.text_field :description %>
-    <%= f.file_field :tack_image %>
   </div>
 
   <div class ="field">
-    <%= f.label :board %><br>
+    <br><%= f.label :board %><br>
     <%= f.select :board_id, options_from_collection_for_select(current_user.boards, 'id', 'name') %>
   </div>
 

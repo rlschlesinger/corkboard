@@ -3,7 +3,7 @@
   <p class="lead">Let's get tacky.</p>
   <p class="lead">
   <% if user_signed_in? %>
-  <%= link_to 'My Board', user_path(current_user.username), class: "btn btn-success"%>
+  <%= link_to 'My Profile', user_path(current_user.username), class: "btn btn-success"%>
   <% else %>
   <%= link_to "Login",  user_session_path, class: "btn btn-success" %>
   <%= link_to "Register", new_user_registration_path, class: "btn btn-primary"  %>

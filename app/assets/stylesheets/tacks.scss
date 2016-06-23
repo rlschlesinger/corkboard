@@ -2,10 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .tack_square {
+  -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.panel {
+  margin-top: 10px;
 }
 
 .grid-item{
   margin-bottom: 25px;
+}
+
+.thumb_tack_img{
+  margin: 0 auto;
+  height: 50px;
 }
 
 .edit_tack_buttons {
@@ -19,15 +33,19 @@
 
 .tack_image img{
   border-radius: 2%;
+  margin-top: 5px;
 }
 
 .tack_descr{
   text-align: center;
-  font-style: italic;
 }
 
 .tack_descr a{
   color: black;
+}
+
+.corkboard{
+  background-image: url("cork-board.jpg");
 }
 
 .tack_descr a:hover{

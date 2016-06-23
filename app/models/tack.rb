@@ -11,6 +11,7 @@ class Tack < ActiveRecord::Base
 
   def repost (user)
     repost_tack = self.dup
+    repost_tack.board_id = self.dup
     repost_tack.user_id = user.id
     repost_tack.original_tack_id = self.id
     repost_tack.tack_image =self.tack_image

@@ -1,29 +1,45 @@
 <h2><%= @board.name %></h2>
 
-<div class = "grid row">
+<div class = "container corkboard">
+  <div class = "grid row">
 <% @board.tacks.each do |tack| %>
-<div class="grid-item col-md-4 tack_square">
-  <div class= "tack_image">
-     <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
-  </div>
-  <div class="tack_descr">
-      <p><strong><%= link_to tack.user.username, user_path(tack.user.username) %></strong></p>
-      <p><%= link_to tack.description, tack_path(tack) %><p>
-      <p><%= pluralize(tack.likes.count, 'like') %></p>
-  </div>
-  <% if tack.user == current_user %>
-    <div class="edit_tack_buttons">
-      <%= link_to 'Edit', edit_tack_path(tack) %> |
-      <%= link_to 'Delete', tack, method: :delete, data: {confirm: 'Are you sure?'}%>
+  <div class="grid-item col-md-4 tack_square">
+
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <%= image_tag("thumb_tack.png", class: 'thumb_tack_img') %>
+        <div class= "tack_image">
+           <%=link_to image_tag(tack.tack_image.url(:medium)), tack_path(tack)%>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="tack_descr">
+            <p><strong><%= link_to tack.user.username, user_path(tack.user.username) %></strong></p>
+            <p>"<%= link_to tack.description, tack_path(tack) %>"<p>
+            <p><button class="btn btn-primary" type="button">
+      Likes <span class="badge"><%= tack.likes.count %></span>
+    </button></p>
+        </div>
+        <% if tack.user == current_user %>
+          <div class="edit_tack_buttons">
+            <%= link_to 'Edit', edit_tack_path(tack) %> |
+            <%= link_to 'Delete', tack, method: :delete, data: {confirm: 'Are you sure?'}%>
+          </div>
+        <% end %>
+        <% if user_signed_in? && tack.user != current_user %>
+        <div class="edit_tack_buttons">
+          <%= link_to 'Repost', repost_tack_path(tack), method: :post, class: 'pull-left', data: {confirm: 'Are you sure?'} %>
+          <%= link_to 'Like', like_tack_path(tack), method: :post, class: 'pull-right' %>
+        </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-  <% if user_signed_in? && tack.user != current_user %>
-  <div class="edit_tack_buttons">
-    <%= link_to 'Repost', repost_tack_path(tack), method: :post, class: 'pull-left', data: {confirm: 'Are you sure?'} %>
-    <%= link_to 'Like', like_tack_path(tack), method: :post, class: 'pull-right' %>
+
+
+
+
   </div>
-  <% end %>
-</div>
 
 <% end %>
+  </div>
 </div>
