@@ -2,10 +2,33 @@
 <%= image_tag @user.avatar.url(:thumb)%>
 <h3><%= @user.username %></h3>
 <p><%= @user.bio %></p>
+<div>
+<h4><%= @user.username %>'s Boards</h4>
+<%= link_to 'New Board', new_board_path %><br>
+<div class = "grid row">
+<% @user.boards.each do |board| %>
+<div class="grid-item col-md-4 tack_square">
+
+    <div class= "tack_image">
+       <%=link_to image_tag(board.tacks.last.tack_image.url(:medium)), board%>
+
+      <br><p><%= link_to board.name, board %><p>
+  </div>
+  <% if board.user == current_user %>
+    <div class="edit_tack_buttons">
+      <%= link_to 'Edit', edit_board_path(board) %> |
+      <%= link_to 'Delete', board, method: :delete, data: {confirm: 'Are you sure?'}%>
+    </div>
+  <% end %>
+</div>
+
+<% end %>
+</div>
+</div>
 
 <div>
   <h4><%= @user.username %>'s Tacks</h4>
-  <div class = "container">
+
     <div class = "grid row">
   <% @user.tacks.each do |tack| %>
     <div class="grid-item col-md-4 tack_square">
@@ -26,5 +49,5 @@
 
   <% end %>
     </div>
-  </div>
+
 </div>

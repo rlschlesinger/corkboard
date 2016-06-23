@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617031434) do
+ActiveRecord::Schema.define(version: 20160623033017) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
@@ -19,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160617031434) do
     t.integer  "tack_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["tack_id"], name: "index_comments_on_tack_id"
@@ -40,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160617031434) do
     t.integer  "tack_image_file_size"
     t.datetime "tack_image_updated_at"
     t.integer  "original_tack_id"
+    t.integer  "board_id"
   end
 
   add_index "tacks", ["user_id"], name: "index_tacks_on_user_id"

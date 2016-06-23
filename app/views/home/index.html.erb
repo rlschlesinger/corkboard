@@ -2,6 +2,11 @@
   <h1 class="display-3">Welcome to Corkboard!</h1>
   <p class="lead">Let's get tacky.</p>
   <p class="lead">
-  <%= link_to 'My Board', tacks_path, class: "btn btn-success"%>
+  <% if user_signed_in? %>
+  <%= link_to 'My Board', user_path(current_user.username), class: "btn btn-success"%>
+  <% else %>
+  <%= link_to "Login",  user_session_path, class: "btn btn-success" %>
+  <%= link_to "Register", new_user_registration_path, class: "btn btn-primary"  %>
+  <% end %>
   </p>
 </div>

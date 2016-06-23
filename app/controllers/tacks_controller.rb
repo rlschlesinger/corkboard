@@ -48,6 +48,18 @@ class TacksController < ApplicationController
     redirect_to tack_path
   end
 
+  def like
+    @tack = Tack.find(params[:id])
+    @like = @tack.likes.build(user_id: current_user.id)
+    if @like.save
+      flash[:notice] = "You liked this Tack!"
+      redirect_to tacks_path
+    else
+      flash[:notice] = "You already liked this Tack!"
+      redirect_to tacks_path
+    end
+  end
+
   private
   def correct_user
     @tack = current_user.tacks.find_by(id: params[:id])
@@ -55,7 +67,7 @@ class TacksController < ApplicationController
   end
 
   def tack_params
-    params.require(:tack).permit(:description, :tack_image)
+    params.require(:tack).permit(:description, :tack_image, :board_id)
   end
 
 end

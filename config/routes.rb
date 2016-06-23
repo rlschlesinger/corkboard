@@ -4,9 +4,14 @@ Rails.application.routes.draw do
     member do
       post '/repost' => 'tacks#repost'
     end
+    member do
+      post '/like' => 'tacks#like'
+    end
   end
 
   devise_for :users
+
+  resources :boards
 
   get ':username' => 'users#show', as: 'user'
 

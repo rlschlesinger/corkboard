@@ -10,6 +10,7 @@
     <div class="tack_descr">
         <p><strong><%= link_to tack.user.username, user_path(tack.user.username) %></strong></p>
         <p><%= link_to tack.description, tack_path(tack) %><p>
+        <p><%= pluralize(tack.likes.count, 'like') %></p>
     </div>
     <% if tack.user == current_user %>
       <div class="edit_tack_buttons">
@@ -19,7 +20,8 @@
     <% end %>
     <% if user_signed_in? && tack.user != current_user %>
     <div class="edit_tack_buttons">
-      <%= link_to 'Repost', repost_tack_path(tack), method: :post, data: {confirm: 'Are you sure?'} %>
+      <%= link_to 'Repost', repost_tack_path(tack), method: :post, class: 'pull-left', data: {confirm: 'Are you sure?'} %>
+      <%= link_to 'Like', like_tack_path(tack), method: :post, class: 'pull-right' %>
     </div>
     <% end %>
   </div>
