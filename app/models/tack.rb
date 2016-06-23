@@ -9,9 +9,9 @@ class Tack < ActiveRecord::Base
   has_attached_file :tack_image, styles: { large: "800X800>", medium: "250x250>", thumb: "100x100>" }
   validates_attachment_content_type :tack_image, content_type: /\Aimage\/.*\Z/
 
-  def repost (user)
+  def repost (edited_tack, user)
     repost_tack = self.dup
-    repost_tack.board_id = self.dup
+    repost_tack.board_id = edited_tack[:board_id]
     repost_tack.user_id = user.id
     repost_tack.original_tack_id = self.id
     repost_tack.tack_image =self.tack_image

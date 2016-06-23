@@ -44,8 +44,8 @@ class TacksController < ApplicationController
 
   def repost
     @tack = Tack.find(params[:id])
-    @tack.repost(current_user)
-    redirect_to tack_path
+    @tack.repost(tack_params, current_user)
+    redirect_to root_url
   end
 
   def like
