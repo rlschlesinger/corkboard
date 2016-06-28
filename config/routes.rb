@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       post '/repost' => 'tacks#repost'
     end
     member do
+      get '/repost' => 'tacks#show_repost'
+    end
+    member do
       post '/like' => 'tacks#like'
     end
   end

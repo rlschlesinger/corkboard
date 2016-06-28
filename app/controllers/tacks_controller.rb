@@ -1,4 +1,5 @@
 class TacksController < ApplicationController
+  before_action :set_tack, only: [:show, :like, :repost, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -20,21 +21,17 @@ class TacksController < ApplicationController
   end
 
   def edit
-    @tack = Tack.find(params[:id])
   end
 
   def show
-    @tack = Tack.find(params[:id])
   end
 
   def destroy
-    @tack = Tack.find(params[:id])
     @tack.destroy
     redirect_to tacks_path, notice: 'You deleted a Tack!'
   end
 
   def update
-    @tack = Tack.find(params[:id])
     if @tack.update(tack_params)
       redirect_to(tack_path(@tack))
     else
@@ -43,13 +40,11 @@ class TacksController < ApplicationController
   end
 
   def repost
-    @tack = Tack.find(params[:id])
     @tack.repost(tack_params, current_user)
     redirect_to root_url
   end
 
   def like
-    @tack = Tack.find(params[:id])
     @like = @tack.likes.build(user_id: current_user.id)
     if @like.save
       flash[:notice] = "You liked this Tack!"
@@ -60,7 +55,21 @@ class TacksController < ApplicationController
     end
   end
 
+  def show_repost
+    @tack = Tack.find(params[:id])
+  end
+
+  def repost
+    @tack.repost(tack_params, current_user)
+    redirect_to root_url
+  end
+
   private
+
+  def set_tack
+     @tack = Tack.find(params[:id])
+  end
+
   def correct_user
     @tack = current_user.tacks.find_by(id: params[:id])
     redirect_to tacks_path, notice: "Not authorized to edit this Tack" if @tack.nil?

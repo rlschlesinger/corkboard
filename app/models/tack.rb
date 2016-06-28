@@ -14,7 +14,7 @@ class Tack < ActiveRecord::Base
     repost_tack.board_id = edited_tack[:board_id]
     repost_tack.user_id = user.id
     repost_tack.original_tack_id = self.id
-    repost_tack.tack_image =self.tack_image
+    repost_tack.tack_image = self.tack_image
     repost_tack.save
   end
 
